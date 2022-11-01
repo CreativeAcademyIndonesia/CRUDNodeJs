@@ -1,0 +1,45 @@
+<%- include('../views/layouts/herader.ejs'); %>
+<%- include('../views/layouts/nav.ejs'); %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Contact</h1>
+            <h4>Dasftar Contact</h4>
+            <% contacts.forEach(contact => { %>
+            <ul>
+                <li>Nama : <%= contact.nama%></li>
+                <li>Nama : <%= contact.email%></li>
+                <li>
+                    <a href="/contact/<%=contact.nama %>">details</a>
+                </li>
+                <li>
+                    <a href="/contact/delete/<%=contact.nama %>">delete</a>
+                </li>
+            </ul>
+            <% }) %>
+        </div>
+
+        <div class="col-6">
+            <h4>tambah kontak</h4>
+            <form action="/contact" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama</label>
+                    <input required type="text" class="form-control" id="name" name="nama" placeholder="masukan nama">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input required type="email" class="form-control" id="email" name="email"
+                        placeholder="masukan email">
+                </div>
+                <button type="submit" class="btn btn-primary">tambahkan</button>
+            </form>
+
+
+
+        </div>
+    </div>
+</div>
+
+<%- include('../views/layouts//footer.ejs'); %>
